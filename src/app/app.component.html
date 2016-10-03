@@ -1,0 +1,17 @@
+<h1>
+  {{title}}
+</h1>
+
+
+<form [formGroup]= "searchForm">
+  <label for="search"> Search youTube</label> 
+  <input id="search" formControlName="search" id="search"/>
+</form>
+
+<div *ngFor="let result of results$ | async" >
+  <a href="http://www.youtube.com/watch?v={{ result.id.videoid }}" target="blank">
+    <h3>{{ result.snippet.title }}</h3>
+  </a>
+  <p> {{ result.snippet.description }} </p>
+  <img [src]="result.snippet.thumbnails.default.url" style="width:100%; max-width:250px;">
+</div>
